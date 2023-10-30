@@ -10,11 +10,15 @@ using System.Windows.Forms;
 
 namespace QuizGame.Views
 {
-    public partial class Home : Form
+    public partial class App : Form
     {
-        public Home()
+        public App()
         {
             InitializeComponent();
+            var homeView = new HomeView();
+            homeView.Dock = DockStyle.Fill;
+            this.Controls.Clear();
+            this.Controls.Add(homeView);
         }
     }
 }
