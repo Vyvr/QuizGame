@@ -33,6 +33,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.AnswersGroupBox = new System.Windows.Forms.GroupBox();
             this.AddNewQuestionButton = new System.Windows.Forms.Button();
+            this.RemoveQuestionButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.AnswersGroupBox.SuspendLayout();
             this.SuspendLayout();
@@ -68,13 +69,14 @@
             // 
             // AnswersGroupBox
             // 
+            this.AnswersGroupBox.Controls.Add(this.RemoveQuestionButton);
             this.AnswersGroupBox.Controls.Add(this.AddNewQuestionButton);
             this.AnswersGroupBox.Location = new System.Drawing.Point(515, 52);
             this.AnswersGroupBox.Name = "AnswersGroupBox";
             this.AnswersGroupBox.Size = new System.Drawing.Size(242, 348);
             this.AnswersGroupBox.TabIndex = 3;
             this.AnswersGroupBox.TabStop = false;
-            this.AnswersGroupBox.Text = "Answers (max 12)";
+            this.AnswersGroupBox.Text = "Answers (max 11)";
             // 
             // AddNewQuestionButton
             // 
@@ -85,6 +87,17 @@
             this.AddNewQuestionButton.Text = "+";
             this.AddNewQuestionButton.UseVisualStyleBackColor = true;
             this.AddNewQuestionButton.Click += new System.EventHandler(this.AddNewQuestionButton_Click);
+            // 
+            // RemoveQuestionButton
+            // 
+            this.RemoveQuestionButton.Location = new System.Drawing.Point(0, 48);
+            this.RemoveQuestionButton.Name = "RemoveQuestionButton";
+            this.RemoveQuestionButton.Size = new System.Drawing.Size(242, 23);
+            this.RemoveQuestionButton.TabIndex = 1;
+            this.RemoveQuestionButton.Text = "-";
+            this.RemoveQuestionButton.UseVisualStyleBackColor = true;
+            this.RemoveQuestionButton.Visible = false;
+            this.RemoveQuestionButton.Click += new System.EventHandler(this.RemoveQuestionButton_Click);
             // 
             // AddNewQuestionsView
             // 
@@ -109,5 +122,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox AnswersGroupBox;
         private System.Windows.Forms.Button AddNewQuestionButton;
+        private System.Windows.Forms.Button RemoveQuestionButton;
     }
 }
