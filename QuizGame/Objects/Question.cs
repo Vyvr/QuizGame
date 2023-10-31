@@ -10,20 +10,17 @@ namespace QuizGame
     public class Question
     {
         #region Public Fields
-        Guid Id;
-        string Content;
-        List<string> Answers;
-        int NumberOfCorrectAnswers;
-        bool IsCorrect;
+        public Guid Id;
+        public string Content;
+        public List<string> Answers;
+        public int NumberOfCorrectAnswers;
+        public bool IsCorrect;
         #endregion
 
         #region ctors
-        public Question(string _content, List<string> _answers, int _numberOfCorrectAnswers)
+        public Question()
         {
             this.generateId();
-            this.Content = _content;
-            this.Answers = _answers;
-            this.NumberOfCorrectAnswers = _numberOfCorrectAnswers;
             IsCorrect = false;
         }
         #endregion
