@@ -119,13 +119,34 @@ namespace QuizGame.Views
             }
         }
 
-        #endregion
+        
 
         private void SubmitQuestionButton_Click(object sender, EventArgs e)
         {
             Question question = new Question();
 
             question.Content = QuestionContentTextBox.Text;
+
+            int correctAnswers = 0;
+
+            foreach (var q in Questions)
+            {
+                string text = q.Key.Text;
+                bool isChecked = q.Value.Checked;
+
+                question.Questions.Add(text, isChecked);
+
+                if(isChecked)
+                {
+                    correctAnswers++;
+                }
+            }
+
+            question.NumberOfCorrectAnswers = correctAnswers;
+
+            question.saveToFile();
         }
+
+        #endregion
     }
 }
