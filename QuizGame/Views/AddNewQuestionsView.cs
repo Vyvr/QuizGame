@@ -14,7 +14,7 @@ namespace QuizGame.Views
     {
         #region Private Fields
         private int AnswersCount = 0;
-        private List<TextBox> AddedTextBoxes = new List<TextBox>();
+        private Dictionary<TextBox, CheckBox> Questions = new Dictionary<TextBox, CheckBox>();
         private enum Operations
         {
             Add,
@@ -58,23 +58,40 @@ namespace QuizGame.Views
                 Location = new Point(x, y)
             };
 
+            CheckBox newCheckBox = new CheckBox
+            {
+                Location = new Point(x + newTextBox.Width + 5, y)
+            };
+
             AnswersGroupBox.Controls.Add(newTextBox);
-            this.AddedTextBoxes.Add(newTextBox);
+            AnswersGroupBox.Controls.Add(newCheckBox);
+
+            Questions.Add(newTextBox, newCheckBox);
         }
 
         private void RemoveQuestionButton_Click(object sender, EventArgs e)
         {
-            if (this.AddedTextBoxes.Count > 0)
+            if (this.Questions.Count > 0)
             {
-                TextBox textBoxToRemove = this.AddedTextBoxes[this.AddedTextBoxes.Count - 1];
+                var lastQuestion = Questions.Last();
+
+                TextBox textBoxToRemove = lastQuestion.Key;
+                CheckBox checkBoxToRemove = lastQuestion.Value;
+
                 AnswersGroupBox.Controls.Remove(textBoxToRemove);
-                this.AddedTextBoxes.RemoveAt(this.AddedTextBoxes.Count - 1);
+                AnswersGroupBox.Controls.Remove(checkBoxToRemove);
+
+                Questions.Remove(textBoxToRemove);
 
                 AnswersCount--;
+
                 textBoxToRemove.Dispose();
+                checkBoxToRemove.Dispose();
+
                 ToggleButtons(Operations.Remove);
             }
         }
+
         private void ToggleButtons(Operations operation)
         {
             int addButtonLocationX = AddNewQuestionButton.Location.X;
@@ -103,5 +120,12 @@ namespace QuizGame.Views
         }
 
         #endregion
+
+        private void SubmitQuestionButton_Click(object sender, EventArgs e)
+        {
+            Question question = new Question();
+
+            question.Content = QuestionContentTextBox.Text;
+        }
     }
 }
