@@ -15,6 +15,7 @@ namespace QuizGame.Views
         #region Private Fields
         private int AnswersCount = 0;
         private Dictionary<TextBox, CheckBox> Questions = new Dictionary<TextBox, CheckBox>();
+        private Point AddButtonPrimaryLocation;
         private enum Operations
         {
             Add,
@@ -26,6 +27,7 @@ namespace QuizGame.Views
         public AddNewQuestionsView()
         {
             InitializeComponent();
+            AddButtonPrimaryLocation = new Point(AddNewQuestionButton.Location.X, AddNewQuestionButton.Location.Y);
         }
         #endregion
 
@@ -119,8 +121,6 @@ namespace QuizGame.Views
             }
         }
 
-        
-
         private void SubmitQuestionButton_Click(object sender, EventArgs e)
         {
             Question question = new Question();
@@ -134,6 +134,16 @@ namespace QuizGame.Views
                 string text = q.Key.Text;
                 bool isChecked = q.Value.Checked;
 
+                if (question.Questions.ContainsKey(text))
+                {
+                    string message = "Questions can't have the same answers";
+                    string caption = "Warning";
+                    MessageBoxButtons buttons = MessageBoxButtons.OK;
+                    MessageBoxIcon icon = MessageBoxIcon.Warning;
+
+                    MessageBox.Show(message, caption, buttons, icon);
+                    return;
+                }
                 question.Questions.Add(text, isChecked);
 
                 if(isChecked)
@@ -141,6 +151,37 @@ namespace QuizGame.Views
                     correctAnswers++;
                 }
             }
+
+            if(question.Content == "")
+            {
+                string message = "Question can't be empty!";
+                string caption = "Warning";
+                MessageBoxButtons buttons = MessageBoxButtons.OK;
+                MessageBoxIcon icon = MessageBoxIcon.Warning;
+
+                MessageBox.Show(message, caption, buttons, icon);
+                return;
+
+            }
+
+            QuestionContentTextBox.Text = "";
+
+            foreach (var q in Questions)
+            {
+                AnswersGroupBox.Controls.Remove(q.Key);
+                AnswersGroupBox.Controls.Remove(q.Value);
+
+                q.Key.Dispose();
+                q.Value.Dispose();
+            }
+
+            Questions.Clear();
+            AnswersCount = 0;
+            AddNewQuestionButton.Location = AddButtonPrimaryLocation;
+            RemoveQuestionButton.Location = new Point(RemoveQuestionButton.Location.X, AddButtonPrimaryLocation.Y + 25);
+            RemoveQuestionButton.Visible = false;
+
+            MessageBox.Show("Question added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             question.NumberOfCorrectAnswers = correctAnswers;
 
