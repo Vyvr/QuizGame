@@ -24,5 +24,13 @@ namespace QuizGame.Views
             this.Controls.Clear();
             this.Controls.Add(addNewQuestionsView);
         }
+
+        private void StartGameButton_Click(object sender, EventArgs e)
+        {
+            var gameView = new GameView();
+            gameView.Dock = DockStyle.Fill;
+            this.Controls.Clear();
+            this.Controls.Add(gameView);
+        }
     }
 }
