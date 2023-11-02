@@ -21,6 +21,7 @@ namespace QuizGame.Views
         private int CurrentQuestionIndex = 0;
         private Question CurrentQuestion;
         private List<Control> DynamicControls = new List<Control>();
+        private int SecondsCount = 0;
 
         private enum QuestionType
         {
@@ -36,6 +37,9 @@ namespace QuizGame.Views
 
             loadQuestions();
             DisplayQuestion();
+
+            TimeInQuizTimer.Interval = 1000;
+            TimeInQuizTimer.Start();
         }
         #endregion
 
@@ -194,7 +198,8 @@ namespace QuizGame.Views
             }
             else
             {
-                var summaryView = new SummaryView(Questions);
+                TimeInQuizTimer.Stop();
+                var summaryView = new SummaryView(Questions, SecondsCount);
                 summaryView.Dock = DockStyle.Fill;
                 this.Controls.Clear();
                 this.Controls.Add(summaryView);
@@ -211,5 +216,10 @@ namespace QuizGame.Views
         }
 
         #endregion
+
+        private void TimeInQuizTimer_Tick(object sender, EventArgs e)
+        {
+            this.SecondsCount += 1;
+        }
     }
 }
