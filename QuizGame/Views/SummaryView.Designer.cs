@@ -32,6 +32,7 @@
             this.TitleLabel = new System.Windows.Forms.Label();
             this.QuestionCountLabel = new System.Windows.Forms.Label();
             this.PercentageLabel = new System.Windows.Forms.Label();
+            this.SecondsLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // BackToMenuButton
@@ -57,7 +58,7 @@
             // QuestionCountLabel
             // 
             this.QuestionCountLabel.AutoSize = true;
-            this.QuestionCountLabel.Location = new System.Drawing.Point(368, 217);
+            this.QuestionCountLabel.Location = new System.Drawing.Point(313, 207);
             this.QuestionCountLabel.Name = "QuestionCountLabel";
             this.QuestionCountLabel.Size = new System.Drawing.Size(103, 13);
             this.QuestionCountLabel.TabIndex = 5;
@@ -66,16 +67,26 @@
             // PercentageLabel
             // 
             this.PercentageLabel.AutoSize = true;
-            this.PercentageLabel.Location = new System.Drawing.Point(368, 270);
+            this.PercentageLabel.Location = new System.Drawing.Point(313, 260);
             this.PercentageLabel.Name = "PercentageLabel";
             this.PercentageLabel.Size = new System.Drawing.Size(88, 13);
             this.PercentageLabel.TabIndex = 6;
             this.PercentageLabel.Text = "PercentageLabel";
             // 
+            // SecondsLabel
+            // 
+            this.SecondsLabel.AutoSize = true;
+            this.SecondsLabel.Location = new System.Drawing.Point(313, 307);
+            this.SecondsLabel.Name = "SecondsLabel";
+            this.SecondsLabel.Size = new System.Drawing.Size(75, 13);
+            this.SecondsLabel.TabIndex = 7;
+            this.SecondsLabel.Text = "SecondsLabel";
+            // 
             // SummaryView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.SecondsLabel);
             this.Controls.Add(this.PercentageLabel);
             this.Controls.Add(this.QuestionCountLabel);
             this.Controls.Add(this.TitleLabel);
@@ -93,5 +104,6 @@
         private System.Windows.Forms.Label TitleLabel;
         private System.Windows.Forms.Label QuestionCountLabel;
         private System.Windows.Forms.Label PercentageLabel;
+        private System.Windows.Forms.Label SecondsLabel;
     }
 }

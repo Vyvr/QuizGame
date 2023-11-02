@@ -28,11 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.PreviousQuestionButton = new System.Windows.Forms.Button();
             this.NextQuestionButton = new System.Windows.Forms.Button();
             this.BackToMenuButton = new System.Windows.Forms.Button();
             this.AnswersPanel = new System.Windows.Forms.Panel();
             this.QuestionLabel = new System.Windows.Forms.Label();
+            this.TimeInQuizTimer = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // PreviousQuestionButton
@@ -81,6 +83,10 @@
             this.QuestionLabel.TabIndex = 4;
             this.QuestionLabel.Text = "label1";
             // 
+            // TimeInQuizTimer
+            // 
+            this.TimeInQuizTimer.Tick += new System.EventHandler(this.TimeInQuizTimer_Tick);
+            // 
             // GameView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -104,5 +110,6 @@
         private System.Windows.Forms.Button BackToMenuButton;
         private System.Windows.Forms.Panel AnswersPanel;
         private System.Windows.Forms.Label QuestionLabel;
+        private System.Windows.Forms.Timer TimeInQuizTimer;
     }
 }

@@ -12,7 +12,7 @@ namespace QuizGame.Views
 {
     public partial class SummaryView : UserControl
     {
-        public SummaryView(Dictionary<Guid, Question> questions)
+        public SummaryView(Dictionary<Guid, Question> questions, int secondsCount)
         {
             InitializeComponent();
 
@@ -21,6 +21,7 @@ namespace QuizGame.Views
 
             QuestionCountLabel.Text = "Correct answers: " + correctQuestionsCount.ToString() + "/" + questions.Count;
             PercentageLabel.Text = "Percentage: " + percentage.ToString() + "%";
+            SecondsLabel.Text = "Quiz done in " + secondsCount.ToString() + " seconds";
         }
 
         private void BackToMenuButton_Click(object sender, EventArgs e)
